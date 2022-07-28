@@ -1,0 +1,14 @@
+rules:
+- id: infra-logging-debug
+  patterns:
+    - pattern-either:
+      - pattern: |
+          javaOpts:
+            extra:
+              ...
+              - "-Dlogging.level.com=DEBUG"
+      - pattern: |
+          LOGGING_LEVEL_COM: DEBUG
+  message: Logging level DEBUG is enabled. For production configuration DEBUG should not be used. DEBUG messages may potentially contain sensitive user information. 
+  languages: [yaml]
+  severity: WARNING
